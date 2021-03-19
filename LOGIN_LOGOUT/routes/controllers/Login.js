@@ -8,6 +8,7 @@ const {
 } = require('../Services/Login')
     // !----------------------------------------------------------------
 router.get('/LoginPage', gneralTools.sessionChecker, (req, res) => {
+
     res.render('auth/login')
 })
 router.post('/UserLogin', GET_User)

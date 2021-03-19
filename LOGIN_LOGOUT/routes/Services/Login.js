@@ -26,13 +26,20 @@ const GET_User = (req, res) => {
     console.log(User_Name, User_Pass);
     User_Info.find({ User_Name: User_Name }, (err, User) => {
         if (err) return res.status(500).send();
+        if (User.length == 0) return res.status(500).send();
         console.log(User);
-        bcrypt.compare(User_Pass, User[0].User_Password, function(err, result) {
-            console.log(err);
-            if (err) return res.status(500).send();
-            console.log(result);
 
-            res.json(User[0]._id)
+        bcrypt.compare(User_Pass, User[0].User_Password, function(err, result) {
+
+            if (err) return res.status(500).send();
+            if (result == true) {
+                User[0].User_Password = User_Pass;
+                req.session.user = User[0]._id
+                res.json(User[0]._id)
+            } else {
+                return res.status(500).send();
+            }
+
 
 
         });

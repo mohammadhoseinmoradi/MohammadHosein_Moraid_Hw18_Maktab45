@@ -25,9 +25,16 @@ app.get('/public/javascripts/login.js', (req, res) => {
 app.get('/public/stylesheets/login.css', (req, res) => {
     res.sendFile(path.join(__dirname, "/public/stylesheets/login.css"))
 })
+app.get('/public/javascripts/dashborad.js', (req, res) => {
 
+    res.sendFile(path.join(__dirname, "/public/javascripts/dashborad.js"))
+})
+app.get('/public/stylesheets/dashbord.css', (req, res) => {
 
-// ?-----------------------------------------------------------DATABASE
+    res.sendFile(path.join(__dirname, "/public/stylesheets/dashbord.css"))
+})
+
+// ?----------s-------------------------------------------------DATABASE
 const mongoose = require('mongoose');
 mongoose.connect(Config.mongodbUrl, {
     useNewUrlParser: true,

@@ -48,9 +48,23 @@ $(document).ready(function() {
                 User_Number: Number
             },
             success: function() {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
                 window.location.reload("/Login/LoginPage")
             },
             error: function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
                 console.log("ERROR");
             }
         })

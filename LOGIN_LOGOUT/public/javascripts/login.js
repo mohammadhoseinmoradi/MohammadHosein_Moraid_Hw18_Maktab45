@@ -7,7 +7,14 @@ $(document).ready(function() {
         let User_Name = $("#Username").val()
 
         let Password = $("#UserPassword").val()
-
+        if (User_Name == "" && Password == "") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href>Why do I have this issue?</a>'
+            })
+        }
 
         console.log(User_Name, Password);
 
@@ -20,11 +27,26 @@ $(document).ready(function() {
                 User_Password: Password
             },
             success: function(data) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
                 console.log(data);
-                window.location.replace(`../Dashboard/dashboard/${data}`);
+                window.location.replace(`../Dashboard/dashboard`);
             },
             error: function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
                 console.log("ERROR");
+
             }
         })
     })
@@ -36,8 +58,3 @@ $(document).ready(function() {
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
-
-
-// signInButton.addEventListener('click', () => {
-//     container.classList.remove("right-panel-active");
-// });

@@ -5,7 +5,8 @@ const Register = require('../controllers/Register')
 const Login = require('../controllers/Login')
 const Dashboard = require('../controllers/Dashboard')
 const generalTools = require('../../tools/gneraltTools')
-    // !---------------------------------------
+
+// !------------------------------------------------------------------------------
 
 
 router.use('/User', Register)
